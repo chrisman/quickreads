@@ -1,0 +1,9 @@
+{
+  "firebase": "quickreads",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

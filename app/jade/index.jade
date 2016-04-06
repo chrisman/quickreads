@@ -1,0 +1,15 @@
+doctype html
+html(lang='en' ng-app='quickreads')
+  head
+    title quickreads
+    include includes/styleblock
+    meta(charset='utf-8' name='viewport', content='width=device-width, initial-scale=1')
+
+  body(ng-controller='MainController')
+    include includes/header
+
+    h2 hello
+    li {{ message }}
+
+    include includes/footer
+    include includes/scriptblock
