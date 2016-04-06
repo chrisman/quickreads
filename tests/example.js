@@ -10,5 +10,5 @@ test('beep boop', (t) => {
             ['a','b','c'],
             "these arrays are equal"
         );
-    }, 1000);
+    }, 500);
 });
