@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tape ./tests/**/*.js | faucet",
     "start": "node ./server/bin/www"
   },
   "author": "",
@@ -30,14 +30,16 @@
     "bootstrap": "^3.3.6"
   },
   "devDependencies": {
-    "browserify": "^13.0.0",
-    "gulp-streamify": "^1.0.2",
-    "gulp-uglify": "^1.5.3",
-    "vinyl-source-stream": "^1.1.0",
     "browser-sync": "^2.11.2",
+    "browserify": "^13.0.0",
+    "faucet": "0.0.1",
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.1",
-    "gulp-sass": "^2.2.0"
+    "gulp-sass": "^2.2.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.3",
+    "tape": "^4.5.1",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
