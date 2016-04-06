@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/chrisman/quickreads.png?label=ready&title=Ready)](https://waffle.io/chrisman/quickreads)
 # Quickreads #
 
 It might actually be a bookclub micro-service
