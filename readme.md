@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/chrisman/quickreads.png?label=ready&title=Ready)](https://waffle.io/chrisman/quickreads)
+[![Stories in Ready](https://badge.waffle.io/chrisman/quickreads.png?label=ready&title=Ready)](https://waffle.io/chrisman/quickreads) [![Build Status](https://travis-ci.org/chrisman/quickreads.svg?branch=master)](https://travis-ci.org/chrisman/quickreads)
 # Quickreads #
 
 It might actually be a bookclub micro-service
