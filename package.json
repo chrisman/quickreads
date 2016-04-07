@@ -1,6 +1,7 @@
 {
   "name": "quickreads",
   "version": "1.0.0",
+  "repository": "https://github.com/chrisman/quickreads",
   "description": "It might actually be a bookclub micro-service",
   "main": "index.js",
   "directories": {
@@ -33,6 +34,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "bcrypt": "^0.8.5",
     "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",
     "faucet": "0.0.1",
