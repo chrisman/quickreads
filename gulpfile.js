@@ -20,6 +20,7 @@ var path = {
 gulp.task('html', () => {
   return gulp.src([
     `${path.src}jade/**/*.jade`,
+    `${path.src}jade/partials/**/*.jade`,
     `!${path.src}jade/includes/*`,
   ])
     .pipe(jade())

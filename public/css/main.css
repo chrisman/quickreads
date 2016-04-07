@@ -1,3 +1,14 @@
 body {
   background-image: url("../assets/notebook_@2X.png");
-  background-color: #4EAACD; }
+  background-color: #4EAACD;
+  height: 100vh; }
+
+.container {
+  min-height: 100%;
+  margin: 0 auto -100px; }
+
+footer {
+  height: 100px; }
+
+.left-border {
+  border-left: 1px dashed #4D585E; }

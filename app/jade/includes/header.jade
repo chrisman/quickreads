@@ -1,1 +1,19 @@
-h1 Header
+nav.navbar.navbar-static-top.navbar-inverse
+  .container
+    .navbar-header
+      button(type='button' data-toggle='collapse' data-target='#mynav' aria-expanded='false' aria-controls='navbar').navbar-toggle.collapsed
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(ui-sref="index") #[i.fa.fa-book] {{ config.title }}
+    #mynav(area-expanded='false' style='height: 1px;').collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li 
+          a(ui-sref="index") Home
+        li 
+          a(ui-sref="about") About
+        li 
+          a(ui-sref="faq") FAQ
+        li 
+          a(ui-sref="contact") Contact

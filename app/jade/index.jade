@@ -5,11 +5,13 @@ html(lang='en' ng-app='quickreads')
     include includes/styleblock
     meta(charset='utf-8' name='viewport', content='width=device-width, initial-scale=1')
 
-  body(ng-controller='MainController')
+  body(ng-controller='HomeController')
     include includes/header
-
-    h2 hello
-    li {{ message }}
-
+      
+    .container
+      .row
+        .columns
+          .well(ui-view="viewA") 
+      
     include includes/footer
     include includes/scriptblock
