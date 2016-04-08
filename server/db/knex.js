@@ -1,3 +1,6 @@
 var environment = process.env.NODE_ENV || 'development';
 var config = require('../knexfile.js')[environment];
-module.exports = require('knex')(config);
+var knex = require('knex')(config);
+var bookshelf = require('bookshelf')(knex);
+
+module.exports = bookshelf.plugin('registry');
