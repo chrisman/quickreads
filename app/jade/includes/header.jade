@@ -17,7 +17,10 @@ nav.navbar.navbar-static-top.navbar-inverse
           a(ui-sref="faq") FAQ
         li 
           a(ui-sref="contact") Contact
-      form
-        input(type=text placeholder="username")
-        input(type=password placeholder="password")
-        button(type=submit) Sign in
+      form.navbar-form.navbar-right(ng-submit="login()")
+        .form-group
+          input(type="text" placeholder="email").form-control
+        .form-group
+          input(type="password" placeholder="password").form-control
+        button(type=submit).btn.btn-successk Sign in
+
