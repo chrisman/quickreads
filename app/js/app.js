@@ -2,11 +2,9 @@ window.$ = window.jQuery = require('jquery')
 require('bootstrap');
 require('angular');
 require('angular-ui-router');
-var _ = require('lodash');
-var fp = require('lodash/fp');
-var ngRoute = require('angular-route');
 
 var HomeController = require('./controllers/HomeController')
+app.controller('HomeController', ['$scope', HomeController]);
 
 var app = angular.module('quickreads', ['ui.router']);
 
@@ -39,4 +37,3 @@ app.config([
 
 app.run(['$state', function ($state) {}])
 
-app.controller('HomeController', ['$scope', HomeController]);
