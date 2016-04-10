@@ -4,6 +4,9 @@
   "repository": "https://github.com/chrisman/quickreads",
   "description": "It might actually be a bookclub micro-service",
   "main": "index.js",
+  "env": {
+    "PYTHON": "python2.7"
+  },
   "directories": {
     "doc": "docs"
   },
