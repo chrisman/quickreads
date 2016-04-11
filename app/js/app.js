@@ -3,9 +3,6 @@ require('bootstrap');
 require('angular');
 require('angular-ui-router');
 
-var HomeController = require('./controllers/HomeController')
-app.controller('HomeController', ['$scope', HomeController]);
-
 var app = angular.module('quickreads', ['ui.router']);
 
 app.config([
@@ -34,6 +31,9 @@ app.config([
     })
 
 }]);
+
+var HomeController = require('./controllers/HomeController')
+app.controller('HomeController', ['$scope', HomeController]);
 
 app.run(['$state', function ($state) {}])
 

@@ -1,7 +1,5 @@
 module.exports = function($scope){
 
-  $scope.message = "YOWZEAH";
-  $scope.config = {
-    title: "quickreads"
-  }
+  $scope.title = "quickreads";
+
 }
