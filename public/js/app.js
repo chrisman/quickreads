@@ -64,13 +64,16 @@ module.exports = function($scope){
 
 module.exports = function($scope, AuthService, LocalStorageService, $location){
   $scope.login = function(){
-    console.log('LOGIN CONTROLLER :: ', $scope.username, $scope.password);
     AuthService.login($scope.username, $scope.password).then(userLoggedIn);
   }
 
   function userLoggedIn(result){
-    console.log(`USER LOGGED IN && result = ${JSON.stringify(result)}`);
-    LocalStorageService.set('token', result.data.token);
+    console.log(result);
+    if (result.data.token) {
+      LocalStorageService.set('token', result.data.token);
+    }
+    else if (result.data.err)
+      LocalStorageService.del('token');
 
     $location.path('/dashboard');
   }
@@ -82,7 +85,6 @@ var config = require('../config');
 
 module.exports = function($http){
   function login(username, password){
-  console.log(`IN AUTHSERVICE:: username = ${username}, password = ${password}`);
     return $http({
       method: 'POST',
       url: `${config.apiurl}/users/login`,
@@ -108,10 +110,16 @@ module.exports = function(){
   function get(key) {
     return localStorage.getItem(key);
   }
+  
+  function del(key) {
+    if(localStorage.getItem(key))
+      localStorage.removeItem(key)
+  }
 
   return {
     set: set,
-    get: get
+    get: get,
+    del: del
   };
 }
 

@@ -1,8 +1,9 @@
+require('dotenv').load();
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-require('dotenv').load();
-var secret = process.env.JWTSEC
+var mysecret = process.env.JWTSEC;
+var jwtoptions = {};
 
 var User = require('../db/models/user');
 
@@ -12,18 +13,27 @@ router.post('/login', (req, res, next) => {
   User.where({
     uid: req.body.username,
   }).fetch().then( found => {
-    console.log(found.get('uid'));
     if(!found) {
       res.json({"err": "user not found"});
-    } else {
+    } else if(found) {
       if (found.get('password') == req.body.password) {
-        res.json({"token": "flippitybloppityblap"});
+        var mypayload = found.get('id');
+        jwt.sign(mypayload, mysecret, jwtoptions, function(mytoken) {
+          res.json({"token": mytoken});
+        });
       } else {
         res.json({"err": "wrong password"});
       }
     }
   });
 });
+
+
+////////////
+// CREATE //
+////////////
+
+// create new user //
 
 //////////
 // READ //
@@ -46,5 +56,17 @@ router.get('/:id', function(req, res, next) {
     res.json(user);
   });
 });
+
+////////////
+// UPDATE //
+////////////
+
+// update user //
+
+////////////
+// DELETE //
+////////////
+
+// delete a user //
 
 module.exports = router;

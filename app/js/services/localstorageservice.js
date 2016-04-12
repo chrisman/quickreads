@@ -7,9 +7,15 @@ module.exports = function(){
   function get(key) {
     return localStorage.getItem(key);
   }
+  
+  function del(key) {
+    if(localStorage.getItem(key))
+      localStorage.removeItem(key)
+  }
 
   return {
     set: set,
-    get: get
+    get: get,
+    del: del
   };
 }
