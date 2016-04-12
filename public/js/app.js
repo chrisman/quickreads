@@ -63,9 +63,9 @@ module.exports = function($scope){
 // Login Controller
 
 module.exports = function($scope, AuthService, LocalStorageService, $location){
-  $scope.login = function(form){
-    console.log(form);
-    AuthService.login(form.username, form.password)
+  $scope.login = function(){
+    console.log($scope.username, $scope.password);
+    AuthService.login($scope.username, $scope.password)
       .then(userLoggedIn);
   }
 
@@ -77,10 +77,12 @@ module.exports = function($scope, AuthService, LocalStorageService, $location){
 }
 
 },{}],5:[function(require,module,exports){
+// authservice
 var config = require('../config');
 
 module.exports = function($http){
   function login(username, password){
+  console.log(`IN AUTHSERVICE:: username = ${username}, password = ${password}`);
     return $http({
       method: 'POST',
       url: `${config.apiurl}/users/login`,
@@ -97,6 +99,7 @@ module.exports = function($http){
 }
 
 },{"../config":2}],6:[function(require,module,exports){
+// localstorageservice.js
 module.exports = function(){
   function set(key, value) {
     localStorage.setItem(key, value);

@@ -1,9 +1,9 @@
 // Login Controller
 
 module.exports = function($scope, AuthService, LocalStorageService, $location){
-  $scope.login = function(form){
-    console.log(form);
-    AuthService.login(form.username, form.password)
+  $scope.login = function(){
+    console.log($scope.username, $scope.password);
+    AuthService.login($scope.username, $scope.password)
       .then(userLoggedIn);
   }
 
