@@ -12,11 +12,11 @@ router.post('/login', (req, res, next) => {
   User.where({
     uid: req.body.username,
   }).fetch().then( found => {
-    console.log(found);
+    console.log(found.get('uid'));
     if(!found) {
       res.json({"err": "user not found"});
     } else {
-      if (found.password == req.body.password) {
+      if (found.get('password') == req.body.password) {
         res.json({"token": "flippitybloppityblap"});
       } else {
         res.json({"err": "wrong password"});
