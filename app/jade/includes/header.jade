@@ -17,7 +17,7 @@ nav.navbar.navbar-static-top.navbar-inverse
           a(ui-sref="faq") FAQ
         li 
           a(ui-sref="contact") Contact
-      form.navbar-form.navbar-right(ng-submit="login()")
+      form.navbar-form.navbar-right(ng-submit="login()" ng-controller="LoginController")
         .form-group
           input(type="text" placeholder="email").form-control
         .form-group

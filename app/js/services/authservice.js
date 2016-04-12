@@ -1,8 +1,6 @@
 var config = require('../config');
 
-app.service('AuthService', auth);
-
-function auth($http){
+module.exports = function($http){
   function login(username, password){
     return $http({
       method: 'POST',

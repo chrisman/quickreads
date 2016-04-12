@@ -4,6 +4,10 @@ require('angular');
 require('angular-ui-router');
 
 var app = angular.module('quickreads', ['ui.router']);
+var HomeController = require('./controllers/HomeController')
+var LoginController = require('./controllers/LoginController');
+var AuthService = require('./services/authservice');
+var LocalStorageService = require('./services/localstorageservice');
 
 app.config([
   '$stateProvider', '$urlRouterProvider', 
@@ -32,8 +36,11 @@ app.config([
 
 }]);
 
-var HomeController = require('./controllers/HomeController')
+
 app.controller('HomeController', ['$scope', HomeController]);
+app.controller('LoginController', ['$scope', 'AuthService', 'LocalStorageService', '$location', LoginController]);
+app.service('AuthService', ['$http', AuthService]);
+app.service('LocalStorageService', [LocalStorageService]);
 
 app.run(['$state', function ($state) {}])
 
