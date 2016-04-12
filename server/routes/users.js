@@ -16,7 +16,7 @@ router.post('/login', (req, res, next) => {
     if(!found) {
       res.json({"err": "user not found"});
     } else if(found) {
-      if (found.get('password') == req.body.password) {
+      if (bcrypt.compareSync(req.body.password, found.get('password'))) {
         var mypayload = found.get('id');
         jwt.sign(mypayload, mysecret, jwtoptions, (mytoken) => {
           res.json({"token": mytoken});
@@ -34,6 +34,7 @@ router.post('/login', (req, res, next) => {
 ////////////
 
 // create new user //
+// TODO check for existing users
 router.post('/', (req, res, next) => {
   new User({
     email: req.body.email,
