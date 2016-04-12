@@ -1,12 +1,28 @@
 var express = require('express');
 var router = express.Router();
+var jwt = require('jsonwebtoken');
+require('dotenv').load();
+var secret = process.env.JWTSEC
 
 var User = require('../db/models/user');
 
 // AUTH //
 router.post('/login', (req, res, next) => {
-  console.log("LOGGING IN");
-  res.json({"status": "ok"});
+  console.log("LOGGING IN", req.body);
+  User.where({
+    uid: req.body.username,
+  }).fetch().then( found => {
+    console.log(found);
+    if(!found) {
+      res.json({"err": "user not found"});
+    } else {
+      if (found.password == req.body.password) {
+        res.json({"token": "flippitybloppityblap"});
+      } else {
+        res.json({"err": "wrong password"});
+      }
+    }
+  });
 });
 
 //////////

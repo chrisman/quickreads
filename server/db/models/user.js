@@ -1,6 +1,8 @@
 // user.js
 var Bookshelf = require('../bookshelf');
 require('./book');
+require('./token');
+require('./usertoken');
 require('./subscription');
 
 var User = Bookshelf.Model.extend({
@@ -8,12 +10,19 @@ var User = Bookshelf.Model.extend({
   hasTimestamps: true,
 
   books: function(){
-    //return this.belongsToMany('Book', 'users_books', 'user_id', 'book_id')
     return this.belongsToMany('Book').through('Subscription');
   },
 
   subscriptions: function(){
     return this.belongsToMany('Subscription');
+  },
+
+  tokens: function(){
+    return this.belongsToMany('Token').through('Usertoken');
+  },
+
+  usertokens: function(){
+    return this.belongsToMany('Usertoken');
   }
 });
 
