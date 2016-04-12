@@ -4,12 +4,12 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var mysecret = process.env.JWTSEC;
 var jwtoptions = {};
+var bcrypt = require('bcrypt');
 
 var User = require('../db/models/user');
 
 // AUTH //
 router.post('/login', (req, res, next) => {
-  console.log("LOGGING IN", req.body);
   User.where({
     uid: req.body.username,
   }).fetch().then( found => {
@@ -18,7 +18,7 @@ router.post('/login', (req, res, next) => {
     } else if(found) {
       if (found.get('password') == req.body.password) {
         var mypayload = found.get('id');
-        jwt.sign(mypayload, mysecret, jwtoptions, function(mytoken) {
+        jwt.sign(mypayload, mysecret, jwtoptions, (mytoken) => {
           res.json({"token": mytoken});
         });
       } else {
@@ -34,6 +34,16 @@ router.post('/login', (req, res, next) => {
 ////////////
 
 // create new user //
+router.post('/', (req, res, next) => {
+  new User({
+    email: req.body.email,
+    uid: req.body.uid,
+    password: bcrypt.hashSync(req.body.password, 8)
+  }).save().then( m => {
+    console.log(m);
+    res.json(m);
+  });
+});
 
 //////////
 // READ //
