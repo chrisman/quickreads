@@ -14,11 +14,10 @@ app.config([
   '$stateProvider', '$urlRouterProvider', 
   function($stateProvider, $urlRouterProvider){
 
-  $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('index', {
-      url: "/",
+    .state('home', {
+      url: '/',
       views: {
         "viewA": {
           templateUrl: "partials/home.html"
@@ -34,6 +33,9 @@ app.config([
         }
       }
     })
+
+
+  $urlRouterProvider.otherwise('/');
 
 }]);
 
